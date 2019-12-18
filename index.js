@@ -54,12 +54,13 @@ Person.prototype.eat = function (someFood) {
 };
 
 Person.prototype.poop = function () {
-  return (this.stomach = []);
+  return this.stomach = [];
 };
 
 Person.prototype.toString = function () {
   return `${this.name}, ${this.age}`;
 };
+
 
 /*
   TASK 2
@@ -85,6 +86,11 @@ function Car(model, milesPerGallon) {
 Car.prototype.fill = function (gallons) {
   this.tank += gallons;
 };
+
+Car.prototype.drive = function (distance) {
+  this.odometer += distance;
+
+}
 
 /*
   TASK 3
