@@ -98,20 +98,7 @@ Car.prototype.drive = function (distance) {
     - Besides the methods on Person.prototype, babies have the ability to `.play()`:
         + Should return a string "Playing with x", x being the favorite toy.
 */
-// class Baby extends Person {
-//   constructor(name, age, favoriteToy) {
-//     super();
-//     this.name = name;
-//     this.age = age;
-//     this.favoriteToy = favoriteToy;
-//   }
-// }
 
-// Baby.prototype.play = function () {
-//   return `Playing with ${this.favoriteToy}`;
-// }
-
-// console.log(Baby.prototype);
 
 function Baby(name, age, favoriteToy) {
   Person.call(this, name, age);
@@ -134,9 +121,9 @@ Baby.prototype.play = function () {
 
   In your own words explain the four principles for the "this" keyword below:
   1. When in global scope, the value of 'this' will be the actual window or console object.
-  2. Allows you to reference an object without having to refer to the object's name. 'this' implies the reference object's context.
+  2. Allows you to reference an object without having to refer to the object's name. 'this' implies a reference to the object's context.
   3. In new binding, 'this' allows you to establish key:value pairs based off of defined parameters within the constructor function.
-  4. By utilizing .call or .apply for explicit binding, you are explicitly stating to use a standalone function on a specific object as a method.
+  4. By utilizing .call or .apply, it allows you to set the value of 'this' based on the object you're calling. Lastly, .bind creates a new function where the parameter refers to the 'this' of the bound object.
 */
 
 
