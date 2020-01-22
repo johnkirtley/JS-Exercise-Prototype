@@ -39,9 +39,27 @@ Airplane.prototype.land = function () {
         + It should return a string with `name` and `age`. Example: "Mary, 50"
 */
 
-function Person() {
-
+function Person(name, age) {
+  this.name = name;
+  this.age = age;
+  this.stomach = [];
 }
+
+Person.prototype.eat = function (someFood) {
+  if (this.stomach.length >= 10) {
+    return this.stomach;
+  } else if (this.stomach.length < 10) {
+    this.stomach.push(someFood);
+  }
+};
+
+Person.prototype.poop = function () {
+  return this.stomach = [];
+};
+
+Person.prototype.toString = function () {
+  return `${this.name}, ${this.age}`;
+};
 
 /*
   TASK 2
@@ -57,7 +75,19 @@ function Person() {
         + The `drive` method should return a string "I ran out of fuel at x miles!" x being `odometer`.
 */
 
-function Car() {
+function Car(model, milesPerGallon) {
+  this.model = model;
+  this.milesPerGallon = milesPerGallon;
+  this.tank = 0;
+  this.odometer = 0;
+}
+
+Car.prototype.fill = function (gallons) {
+  this.tank += gallons;
+};
+
+Car.prototype.drive = function (distance) {
+  this.odometer += distance;
 
 }
 
@@ -68,18 +98,32 @@ function Car() {
     - Besides the methods on Person.prototype, babies have the ability to `.play()`:
         + Should return a string "Playing with x", x being the favorite toy.
 */
-function Baby() {
 
+
+function Baby(name, age, favoriteToy) {
+  Person.call(this, name, age);
+  this.favoriteToy = favoriteToy;
 }
+
+Baby.prototype = Object.create(Person.prototype);
+
+Baby.prototype.play = function () {
+  return `Playing with ${this.favoriteToy}`;
+}
+
+
+
+
+
 
 /* 
   TASK 4
 
   In your own words explain the four principles for the "this" keyword below:
-  1. 
-  2. 
-  3. 
-  4. 
+  1. When in global scope, the value of 'this' will be the actual window or console object.
+  2. Allows you to reference an object without having to refer to the object's name. 'this' implies a reference to the object's context.
+  3. In new binding, 'this' allows you to establish key:value pairs based off of defined parameters within the constructor function.
+  4. By utilizing .call or .apply, it allows you to set the value of 'this' based on the object you're calling. Lastly, .bind creates a new function where the parameter refers to the 'this' of the bound object.
 */
 
 
@@ -88,8 +132,16 @@ function Baby() {
 ///////// END OF CHALLENGE /////////
 if (typeof exports !== 'undefined') {
   module.exports = module.exports || {}
-  if (Airplane) { module.exports.Airplane = Airplane }
-  if (Person) { module.exports.Person = Person }
-  if (Car) { module.exports.Car = Car }
-  if (Baby) { module.exports.Baby = Baby }
+  if (Airplane) {
+    module.exports.Airplane = Airplane
+  }
+  if (Person) {
+    module.exports.Person = Person
+  }
+  if (Car) {
+    module.exports.Car = Car
+  }
+  if (Baby) {
+    module.exports.Baby = Baby
+  }
 }
